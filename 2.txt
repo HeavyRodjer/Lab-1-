@@ -1,0 +1,278 @@
+Задання 1
+// 1. Опишіть масив fibArray з десяти перших чисел Фібоначчі.
+var fibArray = [0, 1]
+for _ in 2..<10 {
+    let nextFib = fibArray[fibArray.count - 1] + fibArray[fibArray.count - 2]
+    fibArray.append(nextFib)
+}
+print("Масив fibArray:", fibArray)
+
+// 2. Створіть масив revArray, елементи якого знаходяться в оберненому порядку відносно масиву fibArray.
+var revArray = fibArray.reversed()
+print("Масив revArray:", Array(revArray))
+
+// 3. Опишіть масив простих чисел snglArray, які не перевищують число 100.
+func isPrime(_ n: Int) -> Bool {
+    if n <= 1 {
+        return false
+    }
+    for i in 2..<n {
+        if n % i == 0 {
+            return false
+        }
+    }
+    return true
+}
+
+var snglArray: [Int] = []
+for i in 2...100 {
+    if isPrime(i) {
+        snglArray.append(i)
+    }
+}
+print("Масив snglArray:", snglArray)
+
+// 4. Виведіть на екран кількість елементів масиву snglArray.
+print("Кількість елементів у масиві snglArray:", snglArray.count)
+
+// 5. Виведіть на екран 10-й елемент масиву snglArray.
+if snglArray.count >= 10 {
+    print("10-й елемент у масиві snglArray:", snglArray[9])
+} else {
+    print("Масив snglArray містить менше 10 елементів.")
+}
+
+// 6. Виведіть на екран підмасив елементів масиву snglArray, починаючи з 15-го та закінчуючи 20-м елементами.
+if snglArray.count >= 20 {
+    let subarray = Array(snglArray[14..<20])
+    print("Підмасив з 15-го по 20-й елементи у масиві snglArray:", subarray)
+} else {
+    print("Масив snglArray містить менше 20 елементів.")
+}
+
+// 7. Створіть масив rptArray з 10 елементів, що рівні 10-му елементу масиву snglArray.
+var rptArray = Array(repeating: snglArray.last ?? 0, count: 10)
+print("Масив rptArray:", rptArray)
+
+// 8. Опишіть масив непарних чисел oddArray (не менших за число 0, та не більших за число 10), використовуючи init(arrayLiteral:).
+var oddArray: [Int] = [1, 3, 5, 7, 9]
+print("Масив oddArray:", oddArray)
+
+// 9. Додайте до масиву oddArray число 11.
+oddArray.append(11)
+print("Масив oddArray з числом 11:", oddArray)
+
+// 10. Додайте до масиву oddArray числа 15, 17, 19 у якості підмасиву.
+oddArray += [15, 17, 19]
+print("Масив oddArray з числами 15, 17, 19:", oddArray)
+
+// 11. Вставте у масив oddArray число 13 на позицію між числами 11 та 15.
+oddArray.insert(13, at: 4)
+print("Масив oddArray з числом 13:", oddArray)
+
+// 12. Видаліть елементи масиву oddArray, починаючи з 5-го та закінчуючи 8-им (невключно) елементами.
+if oddArray.count >= 8 {
+    oddArray.removeSubrange(4..<8)
+    print("Масив oddArray після видалення елементів:", oddArray)
+} else {
+    print("Масив oddArray містить менше 8 елементів.")
+}
+
+// 13. Видаліть останній елемент масиву oddArray та виведіть його на екран.
+if !oddArray.isEmpty {
+    let removedElement = oddArray.removeLast()
+    print("Видалений останній елемент масиву oddArray:", removedElement)
+} else {
+    print("Масив oddArray порожній.")
+}
+
+// 14. Замініть елементи масиву oddArray, починаючи з 2-го та закінчуючи останнім, на масив з числовими елементами 2, 3, 4.
+if oddArray.count >= 3 {
+    oddArray.replaceSubrange(1..<oddArray.count, with: [2, 3, 4])
+    print("Масив oddArray після заміни елементів:", oddArray)
+} else {
+    print("Масив oddArray містить менше 3 елементів.")
+}
+
+// 15. Видаліть елемент масиву oddArray, який рівний числу 3.
+if let index = oddArray.firstIndex(of: 3) {
+    oddArray.remove(at: index)
+    print("Масив oddArray після видалення числа 3:", oddArray)
+} else {
+    print("Число 3 не знайдено у масиві oddArray.")
+}
+
+// 16. Виведіть значення, яке визначає, чи міститься число 3 у масиві oddArray.
+let containsThree = oddArray.contains(3)
+print("Чи міститься число 3 у масиві oddArray:", containsThree)
+
+// 17. Виведіть на екран рядкове представлення масиву oddArray.
+let oddArrayString = oddArray.map { String($0) }.joined(separator: ", ")
+print("Рядкове представлення масиву oddArray:", oddArrayString)
+
+
+Завдання 2
+// 1. Опишіть множину chSet із символів a, b, c та d.
+var chSet: Set<Character> = ["a", "b", "c", "d"]
+
+// 2. Створіть mutable множину mChSet на основі множини chSet.
+var mChSet = chSet
+print("mChSet:", mChSet)
+
+// 3. Виведіть на екран кількість елементів множини mChSet.
+print("Кількість елементів у множині mChSet:", mChSet.count)
+
+// 4. Вставте символ е в множину mChSet.
+mChSet.insert("e")
+print("mChSet після вставки символу 'e':", mChSet)
+
+// 5. Створіть множину srtChSet, яка є відсортованою версією множини mChSet.
+let srtChSet = mChSet.sorted()
+print("Відсортована версія mChSet (srtChSet):", srtChSet)
+
+// 6. Видаліть з множини mChSet символ f та виведіть видалений символ на екран.
+if let removedChar = mChSet.remove("f") {
+    print("Видалений символ з mChSet:", removedChar)
+} else {
+    print("Символ 'f' не знайдено у множині mChSet.")
+}
+
+// 7. Видаліть символ d з множини mChSet за його індексом та виведіть рядкове представлення множини mChSet.
+if let index = mChSet.firstIndex(of: "d") {
+    mChSet.remove(at: index)
+    print("mChSet після видалення символу 'd':", mChSet)
+} else {
+    print("Символ 'd' не знайдено у множині mChSet.")
+}
+
+// 8. Виведіть відстань у множині mChSet між першим елементом та символом а.
+if let firstChar = mChSet.first, let asciiValueA = "a".unicodeScalars.first?.value, let charAscii = firstChar.unicodeScalars.first?.value {
+    let distance = charAscii - asciiValueA
+    print("Відстань між першим елементом та 'a' у множині mChSet:", distance)
+} else {
+    print("Множина mChSet порожня або не містить символу 'a'.")
+}
+
+// 9. Вставте символ а в множину mChSet.
+mChSet.insert("a")
+print("mChSet після вставки символу 'a':", mChSet)
+
+// 10. Опишіть множини aSet (зі значеннями One, Two, Three, 1, 2) та bSet (зі значеннями 1, 2, 3, One, Two).
+let aSet: Set<AnyHashable> = ["One", "Two", "Three", 1, 2]
+let bSet: Set<AnyHashable> = [1, 2, 3, "One", "Two"]
+
+// 11. Створіть множину, яка містить всі спільні елементи для множин aSet та bSet.
+let commonElements = aSet.intersection(bSet)
+print("Спільні елементи множин aSet і bSet:", commonElements)
+
+// 12. Створіть множину, яка містить унікальні елементи у множині aSet по відношенню до множини bSet. Створіть множину, яка містить унікальні елементи у множині bSet по відношенню до множини aSet.
+let uniqueElementsA = aSet.subtracting(bSet)
+let uniqueElementsB = bSet.subtracting(aSet)
+print("Унікальні елементи у множині aSet відносно bSet:", uniqueElementsA)
+print("Унікальні елементи у множині bSet відносно aSet:", uniqueElementsB)
+
+// 13. Створіть множину, яка містить елементи, які не є спільними для множин aSet та bSet.
+let exclusiveElements = aSet.symmetricDifference(bSet)
+print("Елементи, які не є спільними для множин aSet і bSet:", exclusiveElements)
+
+// 14. Створіть множину, яка об'єднує усі елементи множин aSet та bSet.
+let unionSet = aSet.union(bSet)
+print("Об'єднана множина aSet і bSet:", unionSet)
+
+// 15. Опишіть множини xSet (зі значеннями 2...4), ySet (зі значеннями 1...6), zSet (зі значеннями 3, 4, 2) та x1Set (зі значеннями 5, 6, 7).
+
+let xSet: Set<Int> = [2, 3, 4]
+let ySet: Set<Int> = [1, 2, 3, 4, 5, 6]
+let zSet: Set<Int> = [3, 4, 2]
+let x1Set: Set<Int> = [5, 6, 7]
+
+// 16. Виведіть значення, які визначають чи множина xSet входить у множину ySet, а також чи множина ySet входить у множину xSet.
+let xIsSubsetOfY = xSet.isSubset(of: ySet)
+let yIsSubsetOfX = ySet.isSubset(of: xSet)
+print("xSet є підмножиною ySet:", xIsSubsetOfY)
+print("ySet є підмножиною xSet:", yIsSubsetOfX)
+
+// 17. Виведіть значення, які визначають чи множина xSet містить множину ySet, а також чи множина ySet містить множину xSet.
+let xContainsY = xSet.isSuperset(of: ySet)
+let yContainsX = ySet.isSuperset(of: xSet)
+print("xSet містить ySet:", xContainsY)
+print("ySet містить xSet:", yContainsX)
+
+// 18. Виведіть значеня, яке визначає чи множини xSet та zSet є рівними.
+let xIsEqualZ = xSet == zSet
+print("xSet рівна zSet:", xIsEqualZ)
+
+// 19. Виведіть значення, яке визначає чи множина xSet входить у множину zSet, але не є рівною множині zSet.
+let xIsSubsetOfZ = xSet.isStrictSubset(of: zSet)
+print("xSet є суворою підмножиною zSet:", xIsSubsetOfZ)
+
+// 20. Виведіть значення, яке визначає чи множина xSet містить множину zSet, але не є рівною множині zSet.
+let xIsSupersetOfZ = xSet.isStrictSuperset(of: zSet)
+print("xSet є суворою надмножиною zSet:", xIsSupersetOfZ)
+
+
+Завдання 3
+// 1. Опишіть словник nDict, ключами якого є числові рядкові представлення чисел від 1 до 5, а відповідними значеннями є рядкові представлення чисел від 1 до 5 на англійській мові.
+var nDict: [String: String] = ["1": "One", "2": "Two", "3": "Three", "4": "Four", "5": "Five"]
+
+// 2. Виведіть на екран значення масиву nDict за ключем 3.
+if let valueForKey3 = nDict["3"] {
+    print("Значення за ключем '3' у словнику nDict:", valueForKey3)
+} else {
+    print("Ключ '3' не знайдено у словнику nDict.")
+}
+
+// 3. Виведіть на екран значення масиву nDict за індексом ключа 4.
+if let valueAtIndex4 = nDict["4"] {
+    print("Значення за ключем '4' у словнику nDict:", valueAtIndex4)
+} else {
+    print("Ключ '4' не знайдено у словнику nDict.")
+}
+
+// 4. Створіть mutable словник mNDict на основі словника nDict.
+var mNDict = nDict
+print("mNDict:", mNDict)
+
+// 5. Додайте елементи 6:Seven та 7:Six до словника mNDict.
+mNDict["6"] = "Seven"
+mNDict["7"] = "Six"
+print("mNDict після додавання нових елементів:", mNDict)
+
+// 6. Оновіть значення елементів словника mNDict, не використовуючи subscript [], до наступних: 6:Six, 7:Seven, 8:Eight.
+mNDict.updateValue("Six", forKey: "6")
+mNDict.updateValue("Seven", forKey: "7")
+mNDict.updateValue("Eight", forKey: "8")
+print("mNDict після оновлення значень:", mNDict)
+
+// 7. Видаліть елемент за ключем 5 зі словника mNDict.
+mNDict.removeValue(forKey: "5")
+print("mNDict після видалення елемента з ключем '5':", mNDict)
+
+// 8. Видаліть елемент за індексом ключа 4 зі словника mNDict.
+mNDict["4"] = nil
+print("mNDict після видалення елемента з ключем '4':", mNDict)
+
+// 9. Визначіть та виведіть на екран відстань у словнику mNDict між парами значень 1:One та 7:Seven.
+if let value1 = mNDict["1"], let value7 = mNDict["7"] {
+    let distance = abs(Int(value1)! - Int(value7)!)
+    print("Відстань між '1:One' та '7:Seven' у словнику mNDict:", distance)
+} else {
+    print("Один із ключів або обидва ключі не знайдені у словнику mNDict.")
+}
+
+// 10. Створіть масив mNDictKeys, елементами якого є усі ключі словника mNDict.
+let mNDictKeys = Array(mNDict.keys)
+print("Ключі словника mNDict:", mNDictKeys)
+
+// 11. Створіть масив mNDictValues, елементами якого є усі значення словника mNDict.
+let mNDictValues = Array(mNDict.values)
+print("Значення словника mNDict:", mNDictValues)
+
+// 12. Виведіть на екран кількість елементів словника mNDict, а також кількість його всіх ключів та його всіх значень.
+let mNDictCount = mNDict.count
+print("Кількість елементів у словнику mNDict:", mNDictCount)
+print("Кількість ключів у словнику mNDict:", mNDictKeys.count)
+print("Кількість значень у словнику mNDict:", mNDictValues.count)
+
+// 13. Виведіть на екран рядкове представлення словника mNDict.
+print("Рядкове представлення словника mNDict:", mNDict.description)
