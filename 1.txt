@@ -1,0 +1,132 @@
+Завдання 1
+print("Hello, World!")
+
+Завдання 2
+// 1. Ціле десяткове число 12
+let integer1: Int = 12
+
+// 2. Ціле десяткове число -100
+let integer2: Int = -100
+
+// 3. Ціле шістнадцяткове число, що рівне цілому десятковому числу 128
+let hexInteger: Int = 0x80
+
+// 4. Мінімальне десяткове значення числа, яке знаходиться у межах 16-розрядної сітки
+let min16BitValue: Int = Int16.min
+
+// 5. Максимальне десяткове значення числа, яке знаходиться у межах 64-розрядної сітки
+let max64BitValue: Int = Int64.max
+
+// 6. Число з плаваючою крапкою 10,235.34
+let floatNumber: Float = 10.23534
+
+// 7. Символ "а"
+let character: Character = "a"
+
+// 8. Рядок "Hello World"
+let string: String = "Hello World"
+
+// 9. Істина
+let boolValue: Bool = true
+
+// 10. Число 12 та його рядкове представлення "twelve"
+let number: Int = 12
+let numberString: String = "twelve"
+
+
+Завдання 3
+let originalString = "Hello World. This is Swift programming language"
+
+// 1. Визначення та виведення довжини рядка
+let length = originalString.count
+print("Довжина рядка: \(length)")
+
+// 2. Заміна кожного входження символа "i" на символ "u"
+let replacedString = originalString.replacingOccurrences(of: "i", with: "u")
+print("Замінений рядок: \(replacedString)")
+
+// 3. Видалення 4-го, 7-го та 10-го символів
+var removedString = originalString
+removedString.remove(at: removedString.index(removedString.startIndex, offsetBy: 3))
+removedString.remove(at: removedString.index(removedString.startIndex, offsetBy: 6))
+removedString.remove(at: removedString.index(removedString.startIndex, offsetBy: 9))
+print("Рядок з видаленими символами: \(removedString)")
+
+// 4. Додавання рядка " (modified)" до існуючого рядка
+let modifiedString = originalString + " (modified)"
+print("Модифікований рядок: \(modifiedString)")
+
+// 5. Виведення значення, що визначає, чи є рядок порожнім
+let isEmpty = originalString.isEmpty
+print("Чи є рядок порожнім: \(isEmpty)")
+
+// 6. Додавання символу "." до кінця існуючого рядка
+let stringWithDot = originalString + "."
+print("Рядок з доданим символом: \(stringWithDot)")
+
+// 7. Виведення значення, що визначає, чи починається рядок з підрядка "Hello"
+let startsWithHello = originalString.hasPrefix("Hello")
+print("Рядок починається з 'Hello': \(startsWithHello)")
+
+// 8. Виведення значення, що визначає, чи закінчується рядок підрядком "world."
+let endsWithWorld = originalString.hasSuffix("world.")
+print("Рядок закінчується 'world.': \(endsWithWorld)")
+
+// 9. Вставлення символу "-" після 10-го символа
+var stringWithDash = originalString
+stringWithDash.insert("-", at: stringWithDash.index(stringWithDash.startIndex, offsetBy: 10))
+print("Рядок з вставленим символом: \(stringWithDash)")
+
+// 10. Заміна послідовності "Thus us" на послідовністю "It is"
+let replacedSequence = stringWithDash.replacingOccurrences(of: "Thus us", with: "It is")
+print("Рядок заміненої послідовності: \(replacedSequence)")
+
+// 11. Виведення 10-го та 15-го символів існуючого рядка
+let characterAtIndex10 = originalString[originalString.index(originalString.startIndex, offsetBy: 9)]
+let characterAtIndex15 = originalString[originalString.index(originalString.startIndex, offsetBy: 14)]
+print("10-й символ: \(characterAtIndex10), 15-й символ: \(characterAtIndex15)")
+
+// 12. Виведення підрядка, що знаходиться у межах 10-го (включно) та 15-го (невключно) символів
+let substringRange = originalString.index(originalString.startIndex, offsetBy: 10)..<originalString.index(originalString.startIndex, offsetBy: 15)
+let substring = String(originalString[substringRange])
+print("Підрядок: \(substring)")
+
+
+Завдання 4
+// 1. Опишіть сутність, що містить або не містить ціле десяткове число integerNumber, але не задає значення за замовчування.
+var integerNumber: Int?
+
+// 2. Опишіть сутність, що містить або не містить число з плавачою крапкою decimalNumber, але не задає значення за замовчування.
+var decimalNumber: Float?
+
+// 3. Присвойте значення числу integerNumber.
+integerNumber = 42
+
+// 4. Додайте до числа integerNumber те ж значення, використовуючи increment та (або) decrement оператор.
+integerNumber? += 10
+integerNumber? -= 5
+
+// 5. Змініть знак числа на протилежний, використовуючи unary minus або plus оператор.
+integerNumber = -integerNumber!
+
+// 6. Присвойте значення числу decimalNumber значенням числа integerNumber.
+decimalNumber = Float(integerNumber!)
+
+// 7. Опишіть сутність pairOrValues, що містить або не містить значення integerNumber та decimalNumber.
+var pairOfValues: (Int?, Float?) = (integerNumber, decimalNumber)
+
+// 8. Перевірте, чи містить сутність pairOfValues цілочислове значення та виведіть його, якщо таке значення існує.
+if let integer = pairOfValues.0 {
+    print("Integer value: \(integer)")
+}
+
+// 9. Перевірте, чи містить сутність pairOfValues значення, що представлене число з плавачою крапкою, та виведіть його, якщо таке значення існує.
+if let decimal = pairOfValues.1 {
+    print("Decimal value: \(decimal)")
+}
+
+// 10. Виведіть значення числа decimalNumber використовуючи optinional binding.
+if let decimal = decimalNumber {
+    print("Decimal value: \(decimal)")
+}
+
